@@ -1,0 +1,56 @@
+function createproduto($name, $fabricante, $mercado, $preco){
+		$stmt = $this->con->prepare("INSERT INTO prodturo (name, fabricante, mercado, preco) VALUES (?, ?, ?, ?, ?)");
+		$stmt->bind_param("sssi", $name, $fabricante, $mercado, $preco);
+		if($stmt->execute())
+			return true; 			
+		return false;
+	}
+	function getprodutos(){
+		$stmt = $this->con->prepare("SELECT idproduto, name, fabricante, mercado, preco FROM produto");
+		$stmt->execute();
+		$stmt->bind_result($id, $name, $fabricante, $mercado, $preco);
+		
+		$produtos = array(); 
+		
+		while($stmt->fetch()){
+			$produto  = array();
+			$produto['id'] = $id; 
+			$produto['name'] = $name; 
+			$produto['fabricante'] = $fabricante; 
+			$produto['mercado'] = $mercado; 
+			$produto['preco'] = $mercado; 
+			
+			array_push($produtos, $produto); 
+		}
+		
+		return $produtos; 
+	}
+
+
+	function createusuario($name, $email, $senha){
+		$stmt = $this->con->prepare("INSERT INTO usuario (name, email, senha) VALUES (?, ?, ?, ?)");
+		$stmt->bind_param("sss", $name, $email, $senha);
+		if($stmt->execute())
+			return true; 			
+		return false;
+	}
+	
+	function getusuarios(){
+		$stmt = $this->con->prepare("SELECT id, name, email, senha FROM usuario");
+		$stmt->execute();
+		$stmt->bind_result($id, $name, $email, $senha);
+		
+		$usuarios = array(); 
+		
+		while($stmt->fetch()){
+			$usuario  = array();
+			$usuario['id'] = $id; 
+			$usuario['name'] = $name; 
+			$usuario['email'] = $email; 
+			$usuario['senha'] = $senha; 
+			
+			array_push($usuarios, $usuario); 
+		}
+		
+		return $usuarios; 
+	}
