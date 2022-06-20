@@ -4,7 +4,7 @@ create database db_esearch;
 use db_esearch;
 
 CREATE TABLE `usuario` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(200) NOT NULL
@@ -24,11 +24,8 @@ INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`)
 VALUES (1, 'Teste', 'teste@teste.com','123456'),
 (2, 'Victor', 'Victor@teste.com','123456');
 
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `usuario`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+INSERT INTO `produto` (`idP`, `nameP`, `marcaP`, `preco`, `medida`, `tipomp`, `supermercado`)
+VALUES (null,'Teste', 'teste',2.50,1,'teste','teste');
 
 
 
