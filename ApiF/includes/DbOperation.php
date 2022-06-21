@@ -126,6 +126,33 @@ class DbOperation
 		
 		return $produtos; 
 	}
+
+	function createLista($nomeLista){
+		$stmt = $this->con->prepare("INSERT INTO lista (nomeLista) VALUES (?)");
+		$stmt->bind_param('s',$nomeLista);
+		if($stmt->execute())
+			return true; 			
+		return false;
+	}
+
+	function getListas(){
+		$stmt = $this->con->prepare("SELECT idLista, nomeLista, idP  FROM lista");
+		$stmt->execute();
+		$stmt->bind_result($idLista, $nameLista, $idProduto);
+		$listas = array(); 
+		
+		while($stmt->fetch()){
+			$lista  = array();
+			$lista['idLista'] = $idLista; 
+			$lista['nomeLista'] = $nameLista; 
+			$lista['idP'] = $idProduto; 
+
+			
+			array_push($listas, $lista); 
+		}
+		
+		return $listas; 
+	}
 	
 	
 }

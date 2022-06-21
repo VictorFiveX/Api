@@ -154,6 +154,46 @@ require_once '../includes/DbOperation.php';
 					$response['message'] = 'Pedido concluído com sucesso';
 					$response['produtos'] = $db->getProdutos();
 				break; 
+
+				case 'createlista':
+				
+					isTheseParametersAvailable(array('nameLista'));
+					
+					$db = new DbOperation();
+					
+					$result = $db->createLista(
+	
+						$_POST['nameLista']					
+					);
+					
+	
+				
+					if($result){
+						
+						$response['error'] = false; 
+	
+						
+						$response['message'] = 'produto adicionado com sucesso';
+	
+						
+						$response['listas'] = $db->getListas();
+					}else{
+	
+						
+						$response['error'] = true; 
+	
+					
+						$response['message'] = 'Algum erro ocorreu por favor tente novamente';
+					}
+					
+				break;
+
+				case 'getlistas':
+					$db = new DbOperation();
+					$response['error'] = false; 
+					$response['message'] = 'Pedido concluído com sucesso';
+					$response['produtos'] = $db->getListas();
+				break; 
 			}
 			
 			

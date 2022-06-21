@@ -10,6 +10,8 @@ CREATE TABLE `usuario` (
   `senha` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+
 CREATE TABLE `produto` (
   `idP` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `nameP` varchar(200) NOT NULL,
@@ -18,6 +20,14 @@ CREATE TABLE `produto` (
   `medida` decimal(8,2) NOT NULL,
   `tipomp` varchar(200) NOT NULL,
   `supermercado` varchar(200) NOT NULL
+);
+
+CREATE TABLE `lista` (
+  `idLista` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nomeLista` varchar(200) NOT NULL,
+  `idP` int NULL,
+  CONSTRAINT fk_produto FOREIGN KEY (idP) REFERENCES produto (idP)
+ 
 );
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`)
