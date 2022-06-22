@@ -157,13 +157,13 @@ require_once '../includes/DbOperation.php';
 
 				case 'createlista':
 				
-					isTheseParametersAvailable(array('nameLista'));
+					isTheseParametersAvailable(array('nomelista'));
 					
 					$db = new DbOperation();
 					
 					$result = $db->createLista(
 	
-						$_POST['nameLista']					
+						$_POST['nomelista']					
 					);
 					
 	

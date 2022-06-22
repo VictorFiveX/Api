@@ -24,7 +24,7 @@ CREATE TABLE `produto` (
 
 CREATE TABLE `lista` (
   `idLista` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nomeLista` varchar(200) NOT NULL,
+  `nomelista` varchar(200) NOT NULL,
   `idP` int NULL,
   CONSTRAINT fk_produto FOREIGN KEY (idP) REFERENCES produto (idP)
  
